@@ -22,7 +22,6 @@ Para volver a la pantalla principal el usuario puede hacer click en su nombre en
 ![image](https://github.com/PerezJoaquinOmar/SalaDeJuegos/assets/45296767/ca09e779-244b-40d8-928d-988363cf76d1)
 
 # Juegos 
-------------
 # Ahorcado 
 Se presenta una palabra aleatoria de una lista y el usuario debe ingresar las letras correctas usando los botones verdes.  
 El puntaje se basa en la cantidad de tiempo que le toma al usuario completar la palabra.  
