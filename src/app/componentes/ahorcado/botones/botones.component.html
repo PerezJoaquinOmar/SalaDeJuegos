@@ -1,0 +1,9 @@
+<tr>
+    <button type="button" *ngFor="let letra of letras1"  [class]="letra.class"
+    (click)="pressletra(letra)" [disabled]="!letra.active">{{letra.letra}}</button>
+</tr>
+<tr>
+    <button type="button" *ngFor="let letra of letras2" [class]="letra.class"
+    (click)="pressletra(letra)" [disabled]="!letra.active">{{letra.letra}}</button>
+</tr>
+

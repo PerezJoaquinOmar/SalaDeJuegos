@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+        <div id="first">
+            <div class="myform form ">
+                 <div class="logo mb-3">
+                     <div class="col-md-12 text-center">
+                        <br><br>
+                        <img src="assets/juegosicon.png" style="width:300px" alt="">
+                        <h1>Ingresar</h1> 
+                     </div>
+                </div>
+               <form action="" method="post" name="login" [formGroup]="forma"  (ngSubmit)="login()">
+                       <div class="form-group">
+                          <label for="exampleInputEmail1">Correo</label>
+                          <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp"
+                                 placeholder="Ingrese el correo" formControlName="email" [(ngModel)]="mail">
+                          <small class="invalid" *ngIf="forma.controls.email.errors?.required &&forma.controls.email.touched">
+                              El email es requerido
+                           </small>
+                           <small class="invalid" *ngIf="forma.controls.email.errors?.email &&forma.controls.email.touched">
+                              El email no es valido
+                           </small>
+                        </div>
+                       <div class="form-group">
+                          <label for="exampleInputEmail1">Contraseña</label>
+                          <input type="password" name="password" id="password"  class="form-control"
+                                 aria-describedby="emailHelp" placeholder="Ingrese la contraseña" formControlName="password" [(ngModel)]="pass">
+                           <small class="invalid" *ngIf="forma.controls.password.errors?.required &&forma.controls.password.touched">
+                              La contrseña es requerida
+                           </small>
+                           <small class="invalid" *ngIf="forma.controls.password.errors?.pattern &&forma.controls.password.touched">
+                              Contraseña no valida
+                           </small>
+                        </div>
+                       <div class="form-group">
+                          <br>
+                       </div>
+                       <div class="col-md-12 text-center ">
+                          <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm"
+                                 [disabled]="forma.invalid">ingresar</button>
+                       </div>
+                       <div class="col-md-12 ">
+                          <div class="login-or">
+                             <hr class="hr-or">
+                          </div>
+                       </div>
+                       <div class="col-md-12 mb-3">
+                          <p class="text-center">
+                             <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-google-plus">
+                             </i>
+                             </a>
+                          </p>
+                       </div>
+                       <div class="form-group">
+                          <p class="text-center">¿Sin cuenta? <a (click)="reg()" style="color:blue" id="signup">Registrese aquí</a></p>
+                       </div>
+                       
+                       
+                     </form>
+                     
+                     <tr>
+                        <td>
+                           <button mat-raised-button color="primary" (click)="loadUser(1)">Usuario valido 1</button>
+                        </td>
+                        <td>
+                           <button mat-raised-button color="primary" (click)="loadUser(3)">Usuario valido 2</button>
+                        </td>
+                        <td>
+                           <!--button class="btn-accent btn btn-block">Usuario incorrecto</button--->
+                           <button mat-raised-button color="accent" (click)="loadUser(2)">Usuario no registrado</button>
+                        </td>
+                        <td>
+                           <!--button class="btn-accent btn btn-block">Usuario incorrecto</button--->
+                           <button mat-raised-button color="primary" (click)="loadUser(4)">Usuario Admin</button>
+                        </td>
+                     </tr>
+             
+            </div>
+        </div>
+          
+    </div>
+  </div>   
+     

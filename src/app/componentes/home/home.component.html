@@ -1,0 +1,85 @@
+
+  <div class="container">
+    <div class="card-deck mb-3 text-center">
+      <br>
+      <div *ngIf="!game" style="width:800px;margin:auto" [class]="maiclass">
+        <table>
+          <tr>
+            <td>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Ahorcado</h4>
+                </div>
+                <div class="card-body">
+                  <img src="assets/gameicons/ahorcado.png" style="height:200px; padding-right: 50px;">
+                  <button type="button" class="btn btn-lg btn-block btn-primary" (click)="cambiarJuego('ahorcado')">Empezar</button>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Mayor o Menor</h4>
+                </div>
+                <div class="card-body">
+                  <img src="assets/gameicons/mayormenor.png" style="height:200px; padding-right: 50px;">
+                  <button type="button" class="btn btn-lg btn-block btn-primary" (click)="cambiarJuego('mayormenor')">Empezar</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Preguntado</h4>
+                </div>
+                <div class="card-body">
+                  <img src="assets/gameicons/preguntado.png" style="height:200px; padding-right: 50px;">
+                  <button type="button" class="btn btn-lg btn-block btn-primary" (click)="cambiarJuego('preguntado')">Empezar</button>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Puntería</h4>
+                </div>
+                <div class="card-body">
+                  <img src="assets/gameicons/punteria.png" style="height:200px; padding-right: 50px;">
+                  <button type="button" class="btn btn-lg btn-block btn-primary" (click)="cambiarJuego('punteria')">Empezar</button>
+                </div>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            
+          </tr>
+          <tr style="width:100%">
+            
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="game&&modo=='ahorcado'" [class]="ahorclass">
+        <div style="width:800px;margin:auto;padding:20px;background-color: rgba(127, 255, 212, 0.494);border-radius: 10px;border-color: rgb(8, 179, 122);border-style: solid;">
+          <app-ahorcado (closegame)="closegame($event)"></app-ahorcado>
+        </div>
+      </div>
+      <div *ngIf="game&&modo=='mayormenor'" [class]="mayorclass">
+        <div style="width:800px;margin:auto;padding:20px;background-color: rgba(127, 255, 212, 0.494);border-radius: 10px;border-color: rgb(8, 179, 122);border-style: solid;">
+          <app-mayormenor (closegame)="closegame($event)"></app-mayormenor>
+        </div>
+      </div>
+      <div *ngIf="game&&modo=='preguntado'" [class]="pregunclass">
+        <div style="width:800px;margin:auto;padding:20px;background-color: rgba(127, 255, 212, 0.494);border-radius: 10px;border-color: rgb(8, 179, 122);border-style: solid;">
+          <app-preguntados (closegame)="closegame($event)"></app-preguntados>
+        </div>
+      </div>
+      <div *ngIf="game&&modo=='punteria'" [class]="puntclass">
+        <div style="width:800px;margin:auto;padding:20px;background-color: rgba(127, 255, 212, 0.494);border-radius: 10px;border-color: rgb(8, 179, 122);border-style: solid;">
+          <app-punteria (closegame)="closegame($event)"></app-punteria>
+        </div>
+      </div>
+    </div>
+  </div>

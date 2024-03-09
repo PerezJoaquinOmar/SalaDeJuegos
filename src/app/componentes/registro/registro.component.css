@@ -1,0 +1,13 @@
+.invalid {
+    color: red;
+}
+
+
+.formulario div[class^="col-md-"] {
+    height: 90px;
+}
+
+.example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }

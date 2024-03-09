@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "lab42023": {
+      "hosting": {
+        "salaDeJuegos": [
+          "lab42023"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "lab42023"
+  }
+}

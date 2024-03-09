@@ -1,0 +1,106 @@
+<div class="container">
+   <div class="row">
+       <div class="col-md-5 mx-auto">
+       <div id="first">
+           <div class="myform form ">
+                <div class="logo mb-3">
+                    <div class="col-md-12 text-center">
+                       <br><br>
+                       <img src="assets/juegosicon.png" style="width:300px" alt="">
+                       <h1>Registrarse</h1> 
+                    </div>
+               </div>
+              <form action="" method="post" name="login" [formGroup]="forma"  (ngSubmit)="registrar()">
+                      <div class="form-group">
+                         <label for="exampleInputEmail1">Correo</label>
+                         <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp"
+                                placeholder="Ingrese el correo" formControlName="email" [(ngModel)]="mail">
+                         <small class="invalid" *ngIf="forma.controls.email.errors?.required &&forma.controls.email.touched">
+                             El email es requerido
+                          </small>
+                          <small class="invalid" *ngIf="forma.controls.email.errors?.email &&forma.controls.email.touched">
+                             El email no es valido
+                          </small>
+                       </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre de usuario</label>
+                        <input type="text" name="nombre"  class="form-control" id="nombre"
+                               placeholder="Ingrese el nombre" formControlName="nombre" [(ngModel)]="nombre">
+                        <small class="invalid" *ngIf="forma.controls.nombre.errors?.required &&forma.controls.nombre.touched">
+                            El nombre es requerido
+                         </small>
+                         <small class="invalid" *ngIf="forma.controls.nombre.errors?.containsSpaces &&forma.controls.nombre.touched">
+                            El nombre no puede contener espacios
+                         </small>
+                      </div>
+                      <div class="form-group">
+                         <label for="exampleInputEmail1">Contraseña</label>
+                         <input type="password" name="password" id="password"  class="form-control"
+                                aria-describedby="emailHelp" placeholder="Ingrese la contraseña" formControlName="password" [(ngModel)]="pass">
+                          <small class="invalid" *ngIf="forma.controls.password.errors?.required &&forma.controls.password.touched">
+                             La contrseña es requerida
+                          </small>
+                          <small class="invalid" *ngIf="forma.controls.password.errors?.pattern &&forma.controls.password.touched">
+                             La contraseña debe incluir minúsculas, mayúsculas, y un número
+                          </small>
+                       </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Repetir contraseña</label>
+                        <input type="password" name="repassword" id="repassword"  class="form-control"
+                               aria-describedby="repassword" placeholder="Ingrese la contraseña" formControlName="repassword" [(ngModel)]="repass" (ngModelChange)="repasscheck()">
+                         <small class="invalid" *ngIf="!forma.controls.password.touched">
+                            Repita su contraseña
+                         </small>
+                         <small class="invalid" *ngIf="repass != pass &&forma.controls.password.touched">
+                            Las contraseñas no coinciden
+                         </small>
+                      </div>
+                      <div class="form-group">
+                         <br>
+                      </div>
+                      <div class="col-md-12 text-center ">
+                         <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" *ngIf="!spinner"
+                                [disabled]="forma.invalid || repass != pass ">Registrar</button>
+                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" *ngIf="spinner"
+                                [disabled]="true">
+                                <div class="spinner-border" role="status">
+                                    
+                               </div>
+                              </button>
+                      </div>
+                      <div class="col-md-12 ">
+                         <div class="login-or">
+                            <hr class="hr-or">
+                         </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                         <p class="text-center">
+                            <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-google-plus">
+                            </i>
+                            </a>
+                         </p>
+                      </div>
+                      <div class="form-group">
+                         <p class="text-center"><a (click)="reglogin()" id="signup">Ya tengo una cuenta</a></p>
+                      </div>
+                      
+                      
+                    </form>
+                    
+
+                       <div>
+                          <button mat-raised-button color="primary" (click)="loadUser(1)">Usuario ya registrado</button><br><br>
+                       </div>
+                       <div>
+                          <!--button class="btn-accent btn btn-block">Usuario incorrecto</button--->
+                          <button mat-raised-button color="accent" (click)="loadUser(2)">Usuario no registrado 1</button>
+                          <button mat-raised-button color="accent" (click)="loadUser(3)">Usuario no registrado 2</button>
+                          <button mat-raised-button color="accent" (click)="loadUser(4)">Usuario no registrado 3</button>
+                       </div>
+            
+           </div>
+       </div>
+         
+   </div>
+ </div>   
+    

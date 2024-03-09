@@ -1,0 +1,69 @@
+<table style="width:100%" *ngIf="mostrarjuego">
+    <button type="button"class="btn btn-warning" (click)="restart()" style="float:left;margin-top: 5px;margin-left: 5px;">Reiniciar</button>
+    <button type="button"class="btn btn-warning" (click)="showpuntaje()" style="float:left;margin-top: 5px;margin-left: 5px;">Puntajes</button>
+    <button type="button"class="btn btn-warning" (click)="instrucciones()" style="float:left;margin-top: 5px;margin-left: 5px;">?</button>
+
+    <div style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm text-center" style="font-size: 300%;"><b>¿De qué raza es este perro?</b></div>
+            </div>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-2">
+                    <button type="button"class="btn btn-primary" style="color:white;">Puntaje: {{puntaje}}</button>
+                </div>
+                <div class="col-5"></div>
+            </div>
+            <br>
+
+            <div class="row ">
+                
+                <div class="col-sm text-center">
+                    <img [src]="imgperro" style="width:50%;border-radius: 15px;">
+                </div>
+                
+            </div><br>
+
+            <div class="row ">
+                <div class="col-sm text-center">
+                    <button type="button"[class]="sbtn1" style="color:white;font-size: 300%;" [disabled]="choice" (click)="choose(opt1, 1)">{{razas[opt1]}}</button>
+                </div>
+                <div class="col-sm text-center">
+                    <button type="button"[class]="sbtn2" style="color:white;font-size: 300%;" [disabled]="choice" (click)="choose(opt2, 2)">{{razas[opt2]}}</button>
+                </div>
+                <div class="col-sm text-center">
+                    <button type="button"[class]="sbtn3" style="color:white;font-size: 300%;" [disabled]="choice" (click)="choose(opt3, 3)">{{razas[opt3]}}</button>
+                </div>
+            </div>
+
+            <br><br>
+                <button type="button"class="btn btn-warning" (click)="cerrar()">Volver al inicio</button>
+        </div>
+    </div>
+</table>
+
+<div *ngIf="!mostrarjuego" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+    <button type="button"class="btn btn-warning" (click)="volverJuego()">Volver al juego</button>
+    <table style="width:100%" class="table table-striped">
+        <thead class="thead-dark">
+            <th> Nombre</th>
+            <th> Puntos</th>    
+            <th> Fecha</th>    
+        </thead>
+        <tbody>
+            <tr *ngFor="let asd of puntajesm | async">
+                <td>
+                    {{asd.usuario.nombre}}
+                </td>
+                <td>
+                    {{asd.score}}
+                </td>
+                <td>
+                    {{asd.fecha | date:'d/M/yy, h:mm a'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

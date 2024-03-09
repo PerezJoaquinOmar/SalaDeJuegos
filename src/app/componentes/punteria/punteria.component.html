@@ -1,0 +1,32 @@
+<table style="width:100%;" *ngIf="mostrarjuego">
+    <tr>
+        <app-punteriaprincipal (mostrarpunt)="volverJuego($event)" (sendpuntos)="guardar($event)"></app-punteriaprincipal>
+    </tr>
+    <tr>
+    <br><br>
+                <button type="button"class="btn btn-warning" (click)="vovlerinicio()">Volver al inicio</button>
+</table>
+
+<div *ngIf="!mostrarjuego" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+    <button type="button"class="btn btn-warning" (click)="volverJuego(true)">Volver al juego</button>
+    <table style="width:100%" class="table table-striped">
+        <thead class="thead-dark">
+            <th> Nombre</th>
+            <th> Puntos</th>    
+            <th> Fecha</th>    
+        </thead>
+        <tbody>
+            <tr *ngFor="let asd of puntajes | async">
+                <td>
+                    {{asd.usuario.nombre}}
+                </td>
+                <td>
+                    {{asd.score}}
+                </td>
+                <td>
+                    {{asd.fecha | date:'d/M/yy, h:mm a'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

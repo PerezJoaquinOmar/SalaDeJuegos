@@ -1,0 +1,62 @@
+<br>
+<div style="width:800px;margin:auto;padding:20px;background-color: rgba(127, 255, 212, 0.494);border-radius: 10px;border-color: rgb(8, 179, 122);border-style: solid;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <div *ngIf="modo=='graficos'">
+                    <button type="button" class="btn btn-warning" (click)="cambiar('graficos')" style="margin-right: 5px;" >Gráficos</button>
+                    <button type="button" class="btn btn-secondary" (click)="cambiar('comentarios')">Comentarios</button>
+                </div>
+                <div *ngIf="modo=='comentarios'">
+                    <button type="button" class="btn btn-secondary" (click)="cambiar('graficos')" style="margin-right: 5px;" >Gráficos</button>
+                    <button type="button" class="btn btn-warning" (click)="cambiar('comentarios')">Comentarios</button>
+                </div>
+                
+            </div>
+            <div class="col-sm"></div>
+        </div>
+    </div>
+    <br>
+    <div class="container" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px" *ngIf="modo=='graficos'">
+        <div class="row">
+            <div class="col-sm">
+                <canvasjs-chart [options]="chartOptionsFav" *ngIf="showcharts"></canvasjs-chart>
+            </div>    
+        </div><br>
+        <div class="row">
+            <div class="col-sm">
+                <canvasjs-chart [options]="chartOptionsChat" *ngIf="showcharts"></canvasjs-chart>
+            </div>    
+        </div><br>
+        <div class="row">
+            <div class="col-sm">
+                <canvasjs-chart [options]="chartOptionsEdad" *ngIf="showcharts"></canvasjs-chart>
+            </div>    
+        </div>
+    </div>
+
+    <div class="container" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px" *ngIf="modo=='comentarios'">
+        <div *ngFor="let encu of dataEnc">
+            <div  class="row" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+                <div class="col-sm">
+                    <div style="background-color: white;border-radius: 10px;padding: 20px;height: 170px;border-color:rgb(175, 238, 217);border-style: solid;">
+                        {{encu.comentario}}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <b>Nombre: </b>{{encu.nombre}} <br>
+                    <b>Apellido: </b>{{encu.apellido}}<br>
+                    <b>Edad: </b>{{encu.edad}}
+                    <div *ngIf="encu.chat"><b>Usó el chat: </b>Si</div>     
+                    <div *ngIf="!encu.chat"><b>Usó el chat: </b>No</div>
+                    <b>Juego faovrito: </b>{{encu.favorito | favorito}}<br>
+                    <b>Teléfono: </b>{{encu.telefono}}<br>
+                    <b>Correo: </b>{{encu.usuario.email}}<br>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,33 @@
+<!--table style="width:100%;" *ngIf="mostrarjuego">
+    <tr>
+        <app-principal [letraAhorcado]="letraSelec" (EnviarPunt)="mostrarpunt($event)"></app-principal>
+    </tr>
+    <tr>
+        <br>
+        <app-botones (EviarLetra)="letraPasada($event)"></app-botones>
+    </tr>
+</table-->
+
+
+<!--div *ngIf="!mostrarjuego" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+    <button type="button"class="btn btn-warning" (click)="volverJuego()">Volver al juego</button>
+    <table style="width:100%" class="table table-striped">
+        <thead class="thead-dark">
+            <th> Nombre</th>
+            <th> Tiempo</th>    
+        </thead>
+        <tbody>
+            <tr *ngFor="let asd of puntajes | async">
+                <td>
+                    {{asd.usuario.nombre}}
+                </td>
+                <td>
+                    {{asd.tiempo}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div-->
+
+
+<app-principal-mayor (closegame)="cerrar($event)"></app-principal-mayor>

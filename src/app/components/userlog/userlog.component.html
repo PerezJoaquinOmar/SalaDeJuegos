@@ -1,0 +1,23 @@
+<div class="card mb-4 shadow-sm" *ngIf="!showgame">
+    
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">Log de usuarios</h4>
+    </div>
+    <div class="card-body">
+        <div class="container">
+        
+        <br><br>
+          <div class="row mb-3">
+            
+            <div class="col-sm themed-grid-col text-center"><b>Usuario</b></div>
+            <div class="col-sm themed-grid-col text-center"><b>Hora</b></div>
+          </div>
+          <div *ngFor="let log of fdb.logcol; index as i; first as isFirst">
+            <div class="row mb-3">
+              <div class="col-sm themed-grid-col text-center">{{log.nombre}}</div>
+              <div class="col-sm themed-grid-col text-center">{{log.stamp.toDate() | date:'d/M/yy, h:mm a' }}</div>
+            </div>
+          </div>
+    </div>
+</div><br>
+</div>

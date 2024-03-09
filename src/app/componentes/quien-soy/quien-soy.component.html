@@ -1,0 +1,99 @@
+<div class="bg-white">
+
+
+    <hr class="m-0">
+  
+    <div class="container">
+      <div class="text-center py-5">
+        <img src="https://github.com/PerezJoaquinOmar.png" alt class="ui-w-100 rounded-circle">
+  
+        <div class="col-md-8 col-lg-6 col-xl-5 p-0 mx-auto">
+          <h4 class="font-weight-bold my-4">Joaquín Omar Pérez</h4>
+  
+          <div class="text-muted mb-4">
+            Estudiante de programación
+          </div>
+        </div>
+  
+        <div class="text-center">
+          <a href="#" class="btn icon-btn borderless btn-outline-twitter btn-lg btn-round">
+            <span class="ion ion-logo-twitter"></span>
+          </a>
+          <a href="#" class="btn icon-btn borderless btn-outline-facebook btn-lg btn-round">
+            <span class="ion ion-logo-facebook"></span>
+          </a>
+          <a href="#" class="btn icon-btn borderless btn-outline-instagram btn-lg btn-round">
+            <span class="ion ion-logo-instagram"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="m-0">
+  
+    <div>
+        <div class="card mb-4 shadow-sm" *ngIf="!showgame && !showgrid">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Juego propio: Puntería</h4>
+            </div>
+            <div class="card-body">
+                <div >
+                    <img src="assets/gameicons/punteria.png" style="height:200px; padding-right: 50px;"><br>
+                    Un juego de reflejos basado en ir haciendo click a un objetivo que se mueve aleatoriamente en el área de juego la mayor cantidad de veces posibles en 30 segundos. 
+                    Cada click en el objetivo cuenta como un punto
+                </div><br>
+
+                
+
+                <button type="button" class="btn btn-lg btn-block btn-primary" (click)="showGame()">
+                    Click acá para una demo
+                </button><br><br>
+                <div *ngIf="showgame" style="padding-bottom: 100px;">
+                    <button type="button" class="btn btn-lg btn-block btn-primary">Puntaje: {{puntaje}}</button>
+                    <button type="button" class="btn btn-lg btn-block btn-primary">Tiempo: {{counter}}</button> 
+                    <button type="button" class="btn btn-lg btn-block btn-primary" (click)="startGame()" *ngIf="!gameactive&&counter==0">Reiniciar</button> 
+                    <div style="background-color: lightblue; position: absolute;width: 600px;height:600px;" >
+                        <div style="background-color: grey; position: relative; left: 300px; width: 60px;height:60px;"
+                        [ngStyle]="{'left':padrighr+'px', 'top':padtop+'px'}"
+                        (click)="shoot()">
+                        <div *ngIf="puntaje==0" style="color:white;padding-left: 15px;">
+                            click <br> acá
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm" *ngIf="showgame&&!showgrid" style="height:850px">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Juego propio: Puntería</h4>
+            </div>
+            <div class="card-body">
+                <div >          
+                <button type="button" class="btn btn-lg btn-block btn-primary" (click)="showGame()">
+                    Click acá para esconder la demo
+                </button><br><br>
+                <div style="padding-bottom: 100px;">
+                    <button type="button" class="btn btn-lg btn-block btn-primary">Puntaje: {{puntaje}}</button>
+                    <button type="button" class="btn btn-lg btn-block btn-primary">Tiempo: {{counter}}</button> 
+                    <button type="button" class="btn btn-lg btn-block btn-warning" (click)="startGame()" *ngIf="!gameactive&&counter<=0">Reiniciar</button> 
+                    <div style="background-color: lightblue; position: absolute;width: 600px;height:600px;" >
+                        <div style="background-color: grey; position: relative; left: 300px; width: 60px;height:60px;"
+                        [ngStyle]="{'left':padrighr+'px', 'top':padtop+'px'}"
+                        (click)="shoot()">
+                        <div *ngIf="puntaje==0" style="color:white;padding-left: 15px;">
+                            click <br> acá
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+    </div>
+
+        
+
+  
+  </div>

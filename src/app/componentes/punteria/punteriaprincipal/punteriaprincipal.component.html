@@ -1,0 +1,46 @@
+<table style="width:100%">
+    <button type="button"class="btn btn-warning" (click)="restart(0)" style="float:left;margin-top: 5px;margin-left: 5px;">Reiniciar</button>
+    <button type="button"class="btn btn-warning" (click)="showpuntaje()" style="float:left;margin-top: 5px;margin-left: 5px;">Puntajes</button>
+    <button type="button"class="btn btn-warning" (click)="instrucciones()" style="float:left;margin-top: 5px;margin-left: 5px;">?</button>
+
+    <div style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+        <div class="container" >
+            <br>
+            <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-10 text-center">
+                    <button type="button" class="btn  btn-info" style="margin-right: 5px;">Puntaje: {{puntaje}}</button>
+                    <button type="button" class="btn btn-info">Tiempo: {{counter}}</button>  
+                    <!--button type="button" class="btn btn-lg btn-block btn-primary" (click)="startGame()" *ngIf="!gameactive&&counter==0">Reiniciar</button--> 
+                </div>
+                <div class="col-1">
+
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm text-center"></div>
+                <div class="col-sm text-center">
+                    <div style="width: 600px;height:600px;background-color: rgba(196, 233, 255, 0.494);border-radius: 10px;border-color: rgb(8, 153, 179);border-style: solid;" >
+                        <div style="background-color: grey; position: relative; left: 300px; width: 60px;height:60px; border-radius: 50%;"
+                        [ngStyle]="{'left':padrighr+'px', 'top':padtop+'px'}"
+                        (click)="shoot()">
+                            <div *ngIf="puntaje==0" style="color:white;padding-left: 15px;" (click)="restart(0)">
+                                <img src="assets/punteria/target.png" style="width:60px;height: 60px;margin-left: -15px;" alt="">
+                            </div>
+                            <div *ngIf="puntaje!=0" style="color:white;padding-left: 15px;">
+                                <img src="assets/punteria/target.png" style="width:60px;height: 60px;margin-left: -15px;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm text-center"></div>
+            </div>
+        </div>
+    </div>
+
+</table>
+
+

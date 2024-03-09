@@ -1,0 +1,25 @@
+<table style="width:100%">
+    <tr>
+        <button type="button"class="btn btn-warning" (click)="restart()" style="float:left;margin-top: 5px;margin-left: 5px;">Reiniciar</button>
+        <button type="button"class="btn btn-warning" (click)="pressletra()" style="float:left;margin-top: 5px;margin-left: 5px;">Puntajes</button>
+        <button type="button"class="btn btn-warning" (click)="instrucciones()" style="float:left;margin-top: 5px;margin-left: 5px;">?</button>
+
+        <div style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+            <button type="button"class="btn btn-primary" style="color:white;margin-left: -185px;">
+                <div *ngIf="minutesLeft==0">Tiempo: {{timeLeft}}</div>
+                <div *ngIf="minutesLeft>0&&timeLeft<10">Tiempo: {{minutesLeft}}:0{{timeLeft}}</div>
+                <div *ngIf="minutesLeft>0&&timeLeft>9">Tiempo: {{minutesLeft}}:{{timeLeft}}</div>
+            </button>
+            <br><br>
+            <img [src]="'assets/ahoracado/'+errores+'.png'" style="width:50%">
+        </div>
+        
+    </tr>
+    <tr>
+        <br>
+        <button type="button" *ngFor="let letra of palabraOcul" [class]="btclass">{{letra}}</button>
+        <br><br>
+        <button type="button"class="btn btn-warning" *ngIf="!gamelive" (click)="restart()">Reintentar</button>
+    </tr>
+</table>
+

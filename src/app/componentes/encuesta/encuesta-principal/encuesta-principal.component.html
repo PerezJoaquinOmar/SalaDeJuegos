@@ -1,0 +1,138 @@
+<div style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm text-center">
+                <form [formGroup]="formaA" (ngSubmit)="vacio()">
+                    <div class="row">
+                       <div  class="col-sm">
+                          <label>Nombre</label>
+                          <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                          <small class="invalid" *ngIf="formaA.controls['nombre'].errors?.['required'] &&formaA.controls['nombre'].touched">
+                             El nombre es requerido
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['nombre'].errors?.['containsSpaces'] &&formaA.controls['nombre'].touched">
+                             El nombre no puede contener espacios
+                          </small>
+                       </div>
+                       
+                 
+                       <div  class="col-sm"  >
+                          <label>Apellido</label>
+                          <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+                          <small class="invalid" *ngIf="formaA.controls['apellido'].errors?.['required'] &&formaA.controls['apellido'].touched">
+                             El apellido es requerido
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['apellido'].errors?.['containsSpaces'] &&formaA.controls['apellido'].touched">
+                             El apellido no puede contener espacios
+                          </small>
+                       </div>
+                       
+                    </div>
+                    <br>
+                    <div class="row">
+                       <div class="col-sm">
+                          <label>Edad</label>
+                          <input type="number" class="form-control" placeholder="0" formControlName="edad">
+                          <small class="invalid" *ngIf="formaA.controls['edad'].errors?.['required'] &&formaA.controls['edad'].touched">
+                             La edad es requerida
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['edad'].errors?.['min'] &&formaA.controls['edad'].touched">
+                             Debe ser mayor de 18 años
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['edad'].errors?.['max'] &&formaA.controls['edad'].touched">
+                             La edad debe ser menor a 99
+                          </small>
+                       </div>
+                       
+                       
+                       <div class="col-sm">
+                          <label>Número telefónico</label>
+                          <input type="text" class="form-control" placeholder="00-0000-0000" formControlName="telefono" [ngModel]="formaA.value.telefono | telefono">
+                          <small class="invalid" *ngIf="formaA.controls['telefono'].errors?.['required'] &&formaA.controls['telefono'].touched">
+                            Número de teléfono es requerido
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['telefono'].errors?.['minlength'] &&formaA.controls['telefono'].touched">
+                            El número de teléfono debe tener 10 characteres
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['telefono'].errors?.['maxlength'] &&formaA.controls['telefono'].touched">
+                            El número de teléfono no puede superarlos 10 characteres
+                          </small>
+                          <small class="invalid" *ngIf="formaA.controls['telefono'].errors?.['pattern'] &&formaA.controls['telefono'].touched">
+                            Solo puede contener números
+                          </small>
+                       </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>¿Cuál fue su juego favorito?</label>
+                            <div style="background-color: rgba(255, 255, 255, 0.699);border-radius: 15px;padding:30px;border-color: rgb(204, 204, 204);border-style: solid;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"  id="flexRadioDefault1" formControlName="favorito" value="ahorcado">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Ahorcado
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"  id="flexRadioDefault1" formControlName="favorito" value="preguntados">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Preguntados
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"  id="flexRadioDefault1" formControlName="favorito" value="punteria">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Puntería
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="flexRadioDefault1" formControlName="favorito" value="mayormenor">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Mayor o Menor
+                                    </label>
+                                </div>        
+                            </div>
+                            <small class="invalid" *ngIf="formaA.controls['favorito'].errors?.['required']">
+                                Debe elegir una opción
+                            </small>
+
+                        </div>
+                        <div class="col-sm">
+                            <label>¿Probó el chat?</label><br>(Clic para cambiar respuesta)<br>
+                            <button class="btn btn-danger btn-lg" style="padding:50px" (click)="changeChat()" *ngIf="!chat">No</button>
+                            <button class="btn btn-success btn-lg" style="padding:50px" (click)="changeChat()" *ngIf="chat">Si </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Déjenos un cometario sobre su experiencia (
+                                    <b href="" *ngIf="formaA.value.comentario.length<=300">{{300-formaA.value.comentario.length}}</b>
+                                    <b href="" *ngIf="formaA.value.comentario.length>300" style="color: red;">{{300-formaA.value.comentario.length}}</b>
+                                caracteres restantes)</label><br>
+                            <textarea class="form-control" formControlName="comentario"></textarea>
+                        </div>
+                    </div>
+                    <small class="invalid" *ngIf="formaA.controls['comentario'].errors?.['required'] &&formaA.controls['comentario'].touched">
+                        El comentario es requerido
+                    </small>
+                    <small class="invalid" *ngIf="formaA.controls['comentario'].errors?.['maxlength'] &&formaA.controls['comentario'].touched">
+                        El comentario no puede superar los 300 caracteres
+                    </small>
+                 
+                    <br>
+                    <!--button (click)="vacio()">aa</button-->
+                    <button type="submit" class="btn btn-warning" [disabled]="formaA.invalid" *ngIf="!spinner" (click)="guardarEncuesta()" style="width:100%">Enviar</button>
+                 
+                    <button type="submit" class="btn btn-black" style="width:100%" *ngIf="spinner">
+                       <div class="spinner-border" role="status" >
+                          <span class="visually-hidden">Cargando...</span>
+                       </div>
+                    </button>
+                    
+                 </form>
+            </div>
+        </div>
+    </div>
+</div>

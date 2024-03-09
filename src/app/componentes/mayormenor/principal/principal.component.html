@@ -1,0 +1,79 @@
+<table style="width:100%" *ngIf="mostrarjuego">
+    <button type="button"class="btn btn-warning" (click)="restart()" style="float:left;margin-top: 5px;margin-left: 5px;">Reiniciar</button>
+    <button type="button"class="btn btn-warning" (click)="showpuntaje()" style="float:left;margin-top: 5px;margin-left: 5px;">Puntajes</button>
+    <button type="button"class="btn btn-warning" (click)="instrucciones()" style="float:left;margin-top: 5px;margin-left: 5px;">?</button>
+
+    <div style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+        <br><br>
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm text-center">
+                    <button type="button"class="btn btn-primary" style="color:white;margin-right: -12%;">Carta Actual</button>
+                </div>
+                <div class="col-2 text-center">
+                    <button type="button"class="btn btn-primary" style="color:white;">Puntaje: {{puntaje}}</button>
+                </div>  
+                <div class="col-sm text-center">
+                    <button type="button"class="btn btn-primary" style="color:white;margin-left: -12%;">Nueva Carta</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm text-center">
+                    <img [src]="'assets/mayormenor/card/'+showcard+'.png'" style="width:50%">
+                </div>
+                <div class="col-1 text-center">
+                    <img [src]="'assets/mayormenor/card/'+result+'.png'" style="width:300%;margin-left: -100%;" *ngIf="choice">
+                </div>
+                <div class="col-sm text-center">
+                    <img [src]="'assets/mayormenor/card/'+newcard+'.png'" style="width:50%">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm text-center" style="font-size: 300%;"><b>La próxima carta es:</b></div>
+            </div>
+            <div class="row ">
+                <div class="col-sm text-center">
+                    <button type="button"class="btn btn-success" style="color:white;font-size: 300%;" [disabled]="choice" (click)="choose(1)">Mayor</button>
+                </div>
+                <div class="col-1 text-center">
+
+                </div>
+                <div class="col-sm text-center">
+                    <button type="button"class="btn btn-danger" style="color:white;font-size: 300%;" [disabled]="choice" (click)="choose(0)">Menor</button>
+                </div>
+                
+            </div>
+            <br><br>
+                <button type="button"class="btn btn-warning" (click)="cerrar()">Volver al inicio</button>
+        </div>
+
+
+        
+    </div>
+</table>
+
+<div *ngIf="!mostrarjuego" style="background-color: rgba(255, 255, 255, 0.523);border-radius: 15px;padding:30px">
+    <button type="button"class="btn btn-warning" (click)="volverJuego()">Volver al juego</button>
+    <table style="width:100%" class="table table-striped">
+        <thead class="thead-dark">
+            <th> Nombre</th>
+            <th> Puntos</th>    
+            <th> Fecha</th>    
+        </thead>
+        <tbody>
+            <tr *ngFor="let asd of puntajesm | async">
+                <td>
+                    {{asd.usuario.nombre}}
+                </td>
+                <td>
+                    {{asd.score}}
+                </td>
+                <td>
+                    {{asd.fecha | date:'d/M/yy, h:mm a'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
