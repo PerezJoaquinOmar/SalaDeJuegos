@@ -1,6 +1,5 @@
 # SalaDeJuegos
 Proyecto universitario.
-
 Una sala de juegos con manejo de usuarios y guardado de puntajes usando Angular y FireBase.
 
 URL Netlify:
